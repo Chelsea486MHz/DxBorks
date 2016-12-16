@@ -13,14 +13,13 @@ static size_t tty_column;
 static uint8_t tty_colour;
 static uint16_t *tty_buffer;
 
-int tty_init(void)
+void tty_init(void)
 {
   tty_row = 0;
   tty_column = 0;
   tty_colour = tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK);
   tty_buffer = TTY_BUFFER;
   tty_clear();
-  return (KERNEL_SUCCESS);
 }
 
 void tty_clear(void)
@@ -43,7 +42,7 @@ void tty_clear(void)
   tty_row = 0;
 }
 
-uint8_t tty_map_colour(const vga_colour fg, const vga_colour bg)
+uint8_t tty_map_colour(const t_vga_colour fg, const t_vga_colour bg)
 {
   return (fg | (bg << 4));
 }
@@ -161,4 +160,12 @@ void tty_scroll(void)
     memcpy((char*)tty_buffer + (y * TTY_WIDTH), (char*)tty_buffer + ((y + 1) * TTY_WIDTH), TTY_WIDTH);
   }
   memset((char*)tty_buffer + ((TTY_HEIGHT - 1) * TTY_WIDTH), tty_map_char(ASCII_SPACE, tty_colour), TTY_WIDTH);
+}
+
+void tty_delete_last(void)
+{
+  if (tty_column == 0)
+    return;
+  --tty_column;
+  tty_putc(' ');
 }

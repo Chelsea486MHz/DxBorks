@@ -1,9 +1,14 @@
 #include <kernel/main.h>
 #include <kernel/tty.h>
 #include <kernel/panic.h>
+#include <kernel/serial.h>
+#include <kernel/def.h>
+#include <kernel/idt.h>
 
 void kernel_main(void)
 {
   tty_init();
-  kernel_panic(PANIC_NOTHING, __FILE__, __LINE__);
+  idt_init();
+  serial_init(SERIAL_PORT_0);
+  tty_puts(WELCOME_BANNER);
 }

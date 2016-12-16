@@ -24,6 +24,7 @@ _start:
   cli
   movl $stack, %esp
   call kernel_main
+  sti
   infloop:
     hlt
     jmp infloop

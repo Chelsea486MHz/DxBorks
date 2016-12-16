@@ -1,7 +1,7 @@
 #ifndef VGA_H_INCLUDED
 #define VGA_H_INCLUDED
 
-typedef enum e_vga_colour vga_colour;
+typedef enum e_vga_colour t_vga_colour;
 enum e_vga_colour
 {
   VGA_BLACK,

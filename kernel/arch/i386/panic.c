@@ -16,6 +16,6 @@ void kernel_panic(const uint8_t err, const char *file, const size_t line)
   tty_puts("\nError code: ");
   tty_putn(err);
   tty_puts("\n\nHalting execution and disabling interrupts.\n");
-  tty_puts("Please report this error at https://github.com/Garuda1/DxBorks");
+  tty_puts("Please report this error to garuda1@protonmail.com");
   __asm__("cli;hlt");
 }
