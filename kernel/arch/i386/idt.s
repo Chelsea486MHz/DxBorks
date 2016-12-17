@@ -6,5 +6,4 @@
 load_idt:
   mov 4(%esp), %edx
   lidt (%edx)
-  sti
   ret
