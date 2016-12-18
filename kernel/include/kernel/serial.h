@@ -16,8 +16,6 @@
 #define SERIAL_PORT_2 (0x3E8)
 #define SERIAL_PORT_3 (0x2E8)
 
-#define SERIAL_TIMEOUT (0x7F)
-
 void serial_init(const uint16_t port);
 
 uint8_t serial_readb(const uint16_t port);
