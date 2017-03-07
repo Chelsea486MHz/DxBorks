@@ -26,25 +26,51 @@ void idt_init(void)
   IDT[0x21].type_attr = INTERRUPT_GATE;
   IDT[0x21].offset_higherbits = (keyboard_address & 0xFFFF0000) >> 16;
 
-  outb(PORT_PIC1_COMMAND, 0x11);
-  outb(PORT_PIC2_COMMAND, 0x11);
+  /* Send signals to initialize the PICs
+   *
+   * The PICs will be initialized using the bit string 00010001 (0x11) as the first Initialisation Control Word (ICW1)
+   *
+   * BIT    VALUE     DESCRIPTION
+   * 0      1         Tells the PIC we're not going to send IC4 during initialisation
+   * 1      0         Tells the PIC to cascade another 8259A
+   * 2      0         Ignored by most x86 devices
+   * 3      0         Use edge triggered mode instead of level triggered mode
+   * 4      1         Tells the PIC it has to be initialized
+   * 5      0         Required to be 0 by x86 devices
+   * 6      0         Required to be 0 by x86 devices
+   * 7      0         Required to be 0 by x86 devices
+   */
 
-  outb(PORT_PIC1_DATA, 0x20);
-  outb(PORT_PIC2_DATA, 0x28);
+  /* Initialisation Control Word 1 */
+  outb(PORT_PIC1_COMMAND, 0x11); /* Initialise master */
+  outb(PORT_PIC2_COMMAND, 0x11); /* Initialise slave */
 
-  outb(PORT_PIC1_DATA, 0x00);
-  outb(PORT_PIC2_DATA, 0x00);
+  /* Initialisation Control Word 2 */
+  outb(PORT_PIC1_DATA, 0x20); /* Map the master PIC's IRQ0 to 0x20 */
+  outb(PORT_PIC2_DATA, 0x28); /* Map the slave PIC's IRQ8 to 0x28 */
+                              /* The master can only handle interrupts 0x20 to 0x27 */
 
-  outb(PORT_PIC1_DATA, 0x01);
+  /* Initialisation Control Word 3 */
+  outb(PORT_PIC1_DATA, 0x04); /* 0100 (BIT1=1) Tell the master the slave is connected to IRQ2 */
+  outb(PORT_PIC2_DATA, 0x02); /* Tells the slave IR2 is the communication line with the master */
+
+  /* Initialisation Control Word 4 (required by ICW1) */
+  /* This ICW will only be used to signal the PICS we're in x86 mode */
+  outb(PORT_PIC1_DATA, 0x01); /* 00000001, the first bit signals the x86 mode (0 means MCS-80/86 mode) */
   outb(PORT_PIC2_DATA, 0x01);
 
-  outb(PORT_PIC1_DATA, 0xFF);
-  outb(PORT_PIC2_DATA, 0xFF);
+  /* Send EOI to master */
+  outb(PORT_PIC1_COMMAND, 0x20);
+
+  /* We now need to clear out the PIC data registers... we don't want garbage in there */
+  outb(PORT_PIC1_DATA, 0x00);
+  outb(PORT_PIC2_DATA, 0x00);
 
   idt_address = (uint32_t)IDT;
   idt_ptr[0] = (sizeof(t_IDT_entry) * IDT_SIZE) + ((idt_address & 0xFFFF) << 16);
   idt_ptr[1] = idt_address >> 16;
 
+  /* Load the Interrupt Descriptor Table */
   load_idt((uint32_t)idt_ptr);
 
   /* Enable IRQ1, 0xFD = 11111101 */

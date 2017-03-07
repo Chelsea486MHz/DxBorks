@@ -10,5 +10,7 @@ void kernel_main(void)
   tty_init();
   idt_init();
   serial_init(SERIAL_PORT_0);
+  serial_write(SERIAL_PORT_0, "LOL", 3);
   tty_puts(WELCOME_BANNER);
+  kernel_panic(PANIC_NOTHING, __FILE__, __LINE__);
 }
