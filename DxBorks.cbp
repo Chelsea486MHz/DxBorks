@@ -75,6 +75,7 @@
 		<Unit filename="kernel/arch/i386/tty.o" />
 		<Unit filename="kernel/include/ascii.h" />
 		<Unit filename="kernel/include/bool.h" />
+		<Unit filename="kernel/include/ctype.h" />
 		<Unit filename="kernel/include/kernel/asm.h" />
 		<Unit filename="kernel/include/kernel/def.h" />
 		<Unit filename="kernel/include/kernel/idt.h" />
@@ -85,6 +86,11 @@
 		<Unit filename="kernel/include/kernel/serial.h" />
 		<Unit filename="kernel/include/kernel/tty.h" />
 		<Unit filename="kernel/include/keymap.h" />
+		<Unit filename="kernel/include/null.h" />
+		<Unit filename="kernel/include/size_t.h" />
+		<Unit filename="kernel/include/stdarg.h" />
+		<Unit filename="kernel/include/stdint.h" />
+		<Unit filename="kernel/include/va_list.h" />
 		<Unit filename="kernel/include/vga.h" />
 		<Unit filename="obj/Debug/kernel/arch/i386/boot/boot.o" />
 		<Extensions>
