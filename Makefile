@@ -4,7 +4,7 @@
 ## Licensed under GNU GPL v3
 ##
 
-.PHONY: all clean re test
+.PHONY: all clean re test Debug Release
 
 CC := gcc
 AS := as
@@ -41,3 +41,7 @@ test:
 	qemu-system-x86_64 --cdrom $(BIN_DIR)/$(NAME)-$(ARCH).iso
 
 re: clean all
+
+#For Code::Blocks compatibility
+Release: all
+Debug: all test

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DxBorks" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/DxBorks" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/DxBorks" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="LICENSE" />
+		<Unit filename="Makefile" />
+		<Unit filename="README.md" />
+		<Unit filename="bin/isofiles/boot/grub/grub.cfg" />
+		<Unit filename="kernel/arch/i386/boot/boot.s" />
+		<Unit filename="kernel/arch/i386/idt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/idt.o" />
+		<Unit filename="kernel/arch/i386/idt.s" />
+		<Unit filename="kernel/arch/i386/io.s" />
+		<Unit filename="kernel/arch/i386/kb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/kb.o" />
+		<Unit filename="kernel/arch/i386/kb.s" />
+		<Unit filename="kernel/arch/i386/libk/memcpy.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/libk/memcpy.o" />
+		<Unit filename="kernel/arch/i386/libk/memset.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/libk/memset.o" />
+		<Unit filename="kernel/arch/i386/linker.ld" />
+		<Unit filename="kernel/arch/i386/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/main.o" />
+		<Unit filename="kernel/arch/i386/panic.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/panic.o" />
+		<Unit filename="kernel/arch/i386/serial.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/serial.o" />
+		<Unit filename="kernel/arch/i386/tty.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/tty.o" />
+		<Unit filename="kernel/include/ascii.h" />
+		<Unit filename="kernel/include/bool.h" />
+		<Unit filename="kernel/include/kernel/asm.h" />
+		<Unit filename="kernel/include/kernel/def.h" />
+		<Unit filename="kernel/include/kernel/idt.h" />
+		<Unit filename="kernel/include/kernel/kb.h" />
+		<Unit filename="kernel/include/kernel/libk.h" />
+		<Unit filename="kernel/include/kernel/main.h" />
+		<Unit filename="kernel/include/kernel/panic.h" />
+		<Unit filename="kernel/include/kernel/serial.h" />
+		<Unit filename="kernel/include/kernel/tty.h" />
+		<Unit filename="kernel/include/keymap.h" />
+		<Unit filename="kernel/include/vga.h" />
+		<Unit filename="obj/Debug/kernel/arch/i386/boot/boot.o" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
