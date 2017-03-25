@@ -1,3 +1,4 @@
+.extern kernel_main
 .global _start
 .type   _start, @function
 
@@ -24,7 +25,6 @@ _start:
   cli
   movl $stack, %esp
   call kernel_main
-  sti
   hlt
 
 .size _start, . - _start

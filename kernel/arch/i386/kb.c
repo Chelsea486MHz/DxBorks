@@ -8,6 +8,7 @@
 #include <kernel/kb.h>
 #include <kernel/asm.h>
 #include <kernel/tty.h>
+#include <kernel/idt.h>
 
 #include <ascii.h>
 #include <keymap.h>
@@ -18,8 +19,7 @@ void keyboard_handler_main(void)
 {
   uint8_t keycode;
 
-  /* Send END_OF_INPUT */
-  outb(0x20, 0x20);
+  outb(PORT_PIC1_COMMAND, 0x20);
   if (inb(PORT_KEYBOARD_STATUS) & 0x01)
   {
     keycode = inb(PORT_KEYBOARD_DATA);
@@ -33,4 +33,9 @@ void keyboard_handler_main(void)
         tty_putc(keymap[keycode]);
     }
   }
+}
+
+void keyboard_init(void)
+{
+    outb(PORT_PIC1_DATA, 0xFD);
 }

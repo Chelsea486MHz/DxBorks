@@ -8,6 +8,7 @@
 #include <kernel/serial.h>
 #include <kernel/panic.h>
 #include <kernel/asm.h>
+#include <kernel/tty.h>
 
 #include <stdint.h>
 #include <sys/types.h>
@@ -37,7 +38,7 @@ void serial_init(const uint16_t port)
   /* Here we clean up some stuff and set the different parameters */
   outb(port + 3, 0x03);
   outb(port + 2, 0xC7);
-  
+
   /* Enable interrupts */
   outb(port + 4, 0x0B);
 }
@@ -82,6 +83,12 @@ size_t serial_write(const uint16_t port, const char *buf, const size_t len)
 
   i = 0;
   while (i < len)
-    serial_writeb(port, buf[i++]);
+  {
+    serial_writeb(port, buf[i]);
+    tty_puts("[SERIAL] Char \"");
+    tty_write(buf + i, 1);
+    tty_puts("\" has been sent.\n");
+    ++i;
+  }
   return (i);
 }

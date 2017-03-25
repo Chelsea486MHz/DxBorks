@@ -12,5 +12,6 @@
 #define PORT_KEYBOARD_DATA   0x60
 
 void keyboard_handler_main(void);
+void keyboard_init(void);
 
 #endif

@@ -72,7 +72,4 @@ void idt_init(void)
 
   /* Load the Interrupt Descriptor Table */
   load_idt((uint32_t)idt_ptr);
-
-  /* Enable IRQ1, 0xFD = 11111101 */
-  outb(0x21, 0xFD);
 }
