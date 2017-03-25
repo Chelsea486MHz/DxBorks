@@ -76,21 +76,21 @@ void idt_init(void)
   load_idt((void*)idt_address, IDT_SIZE);
 
   #ifdef DEBUG
-  tty_puts("[ ");
+  tty_puts("[  ");
   tty_set_colour(tty_map_colour(VGA_GREEN, VGA_BLACK));
   tty_puts("OK");
   tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
-  tty_puts(" ] IDT remaped to address ");
+  tty_puts("  ] IDT remaped to address ");
   tty_putn(idt_address);
   tty_puts(" with size ");
   tty_putn(IDT_SIZE);
   tty_putc('\n');
   #elif
-  tty_puts("[ ");
+  tty_puts("[  ");
   tty_set_colour(tty_map_colour(VGA_BROWN, VGA_BLACK));
   tty_puts("OK");
   tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
-  tty_puts(" ] IDT remaped\n");
+  tty_puts("  ] IDT remaped\n");
   #endif
 
 }

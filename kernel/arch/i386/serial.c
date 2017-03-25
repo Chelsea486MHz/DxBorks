@@ -42,6 +42,12 @@ void serial_init(const uint16_t port)
 
   /* Enable interrupts */
   outb(port + 4, 0x0B);
+
+  tty_puts("[  ");
+  tty_set_colour(tty_map_colour(VGA_GREEN, VGA_BLACK));
+  tty_puts("OK");
+  tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
+  tty_puts("  ] Serial support initialized\n");
 }
 
 uint8_t serial_readb(const uint16_t port)
@@ -88,11 +94,11 @@ size_t serial_write(const uint16_t port, const char *buf, const size_t len)
     serial_writeb(port, buf[i]);
     #ifdef DEBUG
     {
-      tty_puts("[ ");
+      tty_puts("[  ");
       tty_set_colour(tty_map_colour(VGA_BROWN, VGA_BLACK));
       tty_puts("DEBUG");
       tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
-      tty_puts(" ] Char \"");
+      tty_puts("  ] Char \"");
       tty_write(buf + i, 1);
       tty_puts("\" has been sent through serial port ");
       tty_putn(port);
