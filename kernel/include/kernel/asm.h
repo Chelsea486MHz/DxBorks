@@ -9,7 +9,6 @@
 void outb(const uint8_t port, const uint8_t value);
 uint8_t inb(const uint8_t port);
 
-void load_idt(const uint32_t idt_ptr);
 void keyboard_handler(void);
 
 #endif

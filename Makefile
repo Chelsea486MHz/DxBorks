@@ -28,7 +28,6 @@ CFLAGS := -c -m32 -std=c89 -ffreestanding -nostdlib -O2 -I$(HDR_DIR) $(WARNINGS)
 all: $(C_OBJS)
 	$(AS) --32 $(SRC_DIR)/boot/boot.s -o $(OBJ_DIR)/asm_boot.o
 	$(AS) --32 $(SRC_DIR)/io.s -o $(OBJ_DIR)/asm_io.o
-	$(AS) --32 $(SRC_DIR)/idt.s -o $(OBJ_DIR)/asm_idt.o
 	$(AS) --32 $(SRC_DIR)/kb.s -o $(OBJ_DIR)/asm_kb.o
 	mv $(C_OBJS) $(OBJ_DIR)
 	$(LD) -m elf_i386 -nostdlib -T $(SRC_DIR)/linker.ld -o $(BIN_DIR)/isofiles/boot/$(NAME).bin $(OBJ_DIR)/*.o

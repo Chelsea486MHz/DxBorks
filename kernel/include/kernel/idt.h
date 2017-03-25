@@ -19,6 +19,8 @@
 #define PORT_PIC1_DATA    0x21
 #define PORT_PIC2_DATA    0xA1
 
+#define send_eoi(PORT) outb(PORT, 0x20)
+
 typedef struct s_IDT_entry t_IDT_entry;
 struct s_IDT_entry
 {
@@ -30,5 +32,6 @@ struct s_IDT_entry
 } __attribute__((packed));
 
 void idt_init(void);
+void load_idt(void* add, const uint16_t size);
 
 #endif

@@ -15,16 +15,16 @@ static t_IDT_entry IDT[IDT_SIZE];
 
 void idt_init(void)
 {
-  uint32_t keyboard_address;
+  uint32_t keyboard_handler_address;
   uint32_t idt_address;
   uint32_t idt_ptr[2];
 
-  keyboard_address = (uint32_t)keyboard_handler;
-  IDT[0x21].offset_lowerbits = keyboard_address & 0xFFFF;
+  keyboard_handler_address = (uint32_t)keyboard_handler;
+  IDT[0x21].offset_lowerbits = keyboard_handler_address & 0xFFFF;
   IDT[0x21].selector = KERNEL_CODE_SEGMENT_OFFSET;
   IDT[0x21].zero = 0;
   IDT[0x21].type_attr = INTERRUPT_GATE;
-  IDT[0x21].offset_higherbits = (keyboard_address & 0xFFFF0000) >> 16;
+  IDT[0x21].offset_higherbits = (keyboard_handler_address & 0xFFFF0000) >> 16;
 
   /* Send signals to initialize the PICs
    *
@@ -71,5 +71,16 @@ void idt_init(void)
   idt_ptr[1] = idt_address >> 16;
 
   /* Load the Interrupt Descriptor Table */
-  load_idt((uint32_t)idt_ptr);
+  load_idt((void*)idt_ptr, IDT_SIZE);
+}
+
+/* thanks wiki.osdevorg for this. Old implementation was in idt.s */
+void load_idt(void* add, const uint16_t size)
+{
+    struct {
+        uint16_t length;
+        void*    add;
+    } __attribute__((packed)) IDTR = { size, add };
+
+    __asm__( "lidt %0" : : "m"(IDTR) );
 }
