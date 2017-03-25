@@ -10,4 +10,7 @@
 #define KERNEL_SUCCESS ((unsigned char)0)
 #define KERNEL_FAILURE ((unsigned char)-1)
 
+/* When defined, prints out lots of useful information */
+#define DEBUG
+
 #endif

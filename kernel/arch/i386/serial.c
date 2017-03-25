@@ -11,6 +11,7 @@
 #include <kernel/tty.h>
 
 #include <stdint.h>
+#include <kernel/def.h>
 #include <sys/types.h>
 
 /* This function initializes a serial port with the following:
@@ -85,9 +86,19 @@ size_t serial_write(const uint16_t port, const char *buf, const size_t len)
   while (i < len)
   {
     serial_writeb(port, buf[i]);
-    tty_puts("[SERIAL] Char \"");
-    tty_write(buf + i, 1);
-    tty_puts("\" has been sent.\n");
+    #ifdef DEBUG
+    {
+      tty_puts("[ ");
+      tty_set_colour(tty_map_colour(VGA_BROWN, VGA_BLACK));
+      tty_puts("DEBUG");
+      tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
+      tty_puts(" ] Char \"");
+      tty_write(buf + i, 1);
+      tty_puts("\" has been sent through serial port ");
+      tty_putn(port);
+      tty_putc('\n');
+    }
+    #endif
     ++i;
   }
   return (i);

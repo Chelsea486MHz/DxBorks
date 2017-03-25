@@ -8,6 +8,8 @@
 #include <kernel/idt.h>
 #include <kernel/panic.h>
 #include <kernel/asm.h>
+#include <kernel/tty.h>
+#include <kernel/def.h>
 
 #include <stdint.h>
 
@@ -17,7 +19,7 @@ void idt_init(void)
 {
   uint32_t keyboard_handler_address;
   uint32_t idt_address;
-  uint32_t idt_ptr[2];
+  /*uint16_t idt_ptr[2];*/
 
   keyboard_handler_address = (uint32_t)keyboard_handler;
   IDT[0x21].offset_lowerbits = keyboard_handler_address & 0xFFFF;
@@ -66,20 +68,40 @@ void idt_init(void)
   outb(PORT_PIC1_DATA, 0x00);
   outb(PORT_PIC2_DATA, 0x00);
 
-  idt_address = (uint32_t)IDT;
+  idt_address = (uint32_t)IDT;/*
   idt_ptr[0] = (sizeof(t_IDT_entry) * IDT_SIZE) + ((idt_address & 0xFFFF) << 16);
-  idt_ptr[1] = idt_address >> 16;
+  idt_ptr[1] = idt_address >> 16; */
 
   /* Load the Interrupt Descriptor Table */
-  load_idt((void*)idt_ptr, IDT_SIZE);
+  load_idt((void*)idt_address, IDT_SIZE);
+
+  #ifdef DEBUG
+  tty_puts("[ ");
+  tty_set_colour(tty_map_colour(VGA_GREEN, VGA_BLACK));
+  tty_puts("OK");
+  tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
+  tty_puts(" ] IDT remaped to address ");
+  tty_putn(idt_address);
+  tty_puts(" with size ");
+  tty_putn(IDT_SIZE);
+  tty_putc('\n');
+  #elif
+  tty_puts("[ ");
+  tty_set_colour(tty_map_colour(VGA_BROWN, VGA_BLACK));
+  tty_puts("OK");
+  tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
+  tty_puts(" ] IDT remaped\n");
+  #endif
+
 }
 
-/* thanks wiki.osdevorg for this. Old implementation was in idt.s */
+/* thanks wiki.osdev.org for this. Old implementation was in idt.s */
 void load_idt(void* add, const uint16_t size)
 {
-    struct {
+    struct
+    {
         uint16_t length;
-        void*    add;
+        void*    base;
     } __attribute__((packed)) IDTR = { size, add };
 
     __asm__( "lidt %0" : : "m"(IDTR) );

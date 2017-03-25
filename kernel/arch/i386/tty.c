@@ -20,6 +20,11 @@ void tty_init(void)
   tty_colour = tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK);
   tty_buffer = TTY_BUFFER;
   tty_clear();
+  tty_puts("[ ");
+  tty_set_colour(tty_map_colour(VGA_GREEN, VGA_BLACK));
+  tty_puts("OK");
+  tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
+  tty_puts(" ] TTY initialized\n");
 }
 
 void tty_clear(void)
