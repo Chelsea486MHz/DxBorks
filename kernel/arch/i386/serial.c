@@ -20,7 +20,7 @@
  * - 1 stop bit
  * - 115200 bauds
  */
-void serial_init(const uint16_t port)
+t_kstat serial_init(const uint16_t port)
 {
   if (port != SERIAL_PORT_0 &&
       port != SERIAL_PORT_1 &&
@@ -47,7 +47,10 @@ void serial_init(const uint16_t port)
   tty_set_colour(tty_map_colour(VGA_GREEN, VGA_BLACK));
   tty_puts("OK");
   tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
-  tty_puts("  ] Serial support initialized\n");
+  tty_puts("  ] Serial port ");
+  tty_putn(port - SERIAL_PORT_0);
+  tty_puts(" initialized\n");
+  return (KSUCCESS);
 }
 
 uint8_t serial_readb(const uint16_t port)
@@ -98,10 +101,10 @@ size_t serial_write(const uint16_t port, const char *buf, const size_t len)
       tty_set_colour(tty_map_colour(VGA_BROWN, VGA_BLACK));
       tty_puts("DEBUG");
       tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
-      tty_puts("  ] Char \"");
-      tty_write(buf + i, 1);
+      tty_puts("  ] Byte \"");
+      tty_putn(buf[i]);
       tty_puts("\" has been sent through serial port ");
-      tty_putn(port);
+      tty_putn(port - SERIAL_PORT_0);
       tty_putc('\n');
     }
     #endif

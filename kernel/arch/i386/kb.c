@@ -43,7 +43,8 @@ void keyboard_handler_main(void)
   }
 }
 
-void keyboard_init(void)
+t_kstat keyboard_init(void)
 {
     outb(PORT_PIC1_DATA, 0xFD);
+    return (KSUCCESS);
 }

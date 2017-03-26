@@ -32,10 +32,28 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="DxBorks.depend" />
+		<Unit filename="DxBorks.layout" />
 		<Unit filename="LICENSE" />
 		<Unit filename="Makefile" />
 		<Unit filename="README.md" />
+		<Unit filename="bin/dxborks-i386.iso" />
+		<Unit filename="bin/isofiles/boot/dxborks.bin" />
 		<Unit filename="bin/isofiles/boot/grub/grub.cfg" />
+		<Unit filename="bin/obj/asm_boot.o" />
+		<Unit filename="bin/obj/asm_io.o" />
+		<Unit filename="bin/obj/asm_kb.o" />
+		<Unit filename="bin/obj/idt.o" />
+		<Unit filename="bin/obj/kb.o" />
+		<Unit filename="bin/obj/main.o" />
+		<Unit filename="bin/obj/memcpy.o" />
+		<Unit filename="bin/obj/memset.o" />
+		<Unit filename="bin/obj/panic.o" />
+		<Unit filename="bin/obj/readme.md" />
+		<Unit filename="bin/obj/serial.o" />
+		<Unit filename="bin/obj/tty.o" />
+		<Unit filename="bin/obj/vm.o" />
+		<Unit filename="documentation.odt" />
 		<Unit filename="kernel/arch/i386/boot/boot.s" />
 		<Unit filename="kernel/arch/i386/idt.c">
 			<Option compilerVar="CC" />
@@ -73,6 +91,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/arch/i386/tty.o" />
+		<Unit filename="kernel/arch/i386/vm/vm.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="kernel/include/ascii.h" />
 		<Unit filename="kernel/include/bool.h" />
 		<Unit filename="kernel/include/ctype.h" />
@@ -85,6 +106,7 @@
 		<Unit filename="kernel/include/kernel/panic.h" />
 		<Unit filename="kernel/include/kernel/serial.h" />
 		<Unit filename="kernel/include/kernel/tty.h" />
+		<Unit filename="kernel/include/kernel/vm/vm.h" />
 		<Unit filename="kernel/include/keymap.h" />
 		<Unit filename="kernel/include/null.h" />
 		<Unit filename="kernel/include/size_t.h" />

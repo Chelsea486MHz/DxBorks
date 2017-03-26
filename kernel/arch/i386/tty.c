@@ -1,4 +1,4 @@
-#include <sys/types.h>
+#include <size_t.h>
 #include <stdint.h>
 
 #include <kernel/def.h>
@@ -13,7 +13,7 @@ static size_t tty_column;
 static uint8_t tty_colour;
 static uint16_t *tty_buffer;
 
-void tty_init(void)
+t_kstat tty_init(void)
 {
   tty_row = 0;
   tty_column = 0;
@@ -25,6 +25,7 @@ void tty_init(void)
   tty_puts("OK");
   tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
   tty_puts("  ] TTY initialized\n");
+  return (KSUCCESS);
 }
 
 void tty_clear(void)
@@ -62,12 +63,12 @@ void tty_set_colour(const uint8_t colour)
   tty_colour = colour;
 }
 
-int tty_put_raw(const char c, const size_t x, const size_t y)
+t_kstat tty_put_raw(const char c, const size_t x, const size_t y)
 {
   if ((x >= TTY_WIDTH) || (y >= TTY_HEIGHT))
     kernel_panic(PANIC_BADTTYCOORDS, __FILE__, __LINE__);
   tty_buffer[(y * TTY_WIDTH) + x] = tty_map_char(c, tty_colour);
-  return (KERNEL_SUCCESS);
+  return (KSUCCESS);
 }
 
 size_t tty_write(const char *buf, const size_t len)
@@ -106,9 +107,9 @@ size_t tty_write(const char *buf, const size_t len)
   return (i);
 }
 
-size_t tty_putc(const char c)
+t_kstat tty_putc(const char c)
 {
-  return ((tty_write(&c, sizeof(char)) != sizeof(char)) ? KERNEL_FAILURE : KERNEL_SUCCESS);
+  return ((tty_write(&c, sizeof(char)) != sizeof(char)) ? KFAILURE : KSUCCESS);
 }
 
 size_t tty_puts(const char *str)
@@ -118,8 +119,8 @@ size_t tty_puts(const char *str)
   i = 0;
   while (str[i] != ASCII_NULL)
   {
-    if (tty_putc(str[i]) == KERNEL_FAILURE)
-      return (KERNEL_FAILURE);
+    if (tty_putc(str[i]) == KFAILURE)
+      return (KFAILURE);
     ++i;
   }
   return (i);

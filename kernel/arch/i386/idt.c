@@ -15,7 +15,7 @@
 
 static t_IDT_entry IDT[IDT_SIZE];
 
-void idt_init(void)
+t_kstat idt_init(void)
 {
   uint32_t keyboard_handler_address;
   uint32_t idt_address;
@@ -92,7 +92,7 @@ void idt_init(void)
   tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
   tty_puts("  ] IDT remaped\n");
   #endif
-
+  return (KSUCCESS);
 }
 
 /* thanks wiki.osdev.org for this. Old implementation was in idt.s */

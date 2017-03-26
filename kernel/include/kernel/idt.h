@@ -9,6 +9,7 @@
 #define _IDT_H_INCLUDED
 
 #include <stdint.h>
+#include <kernel/def.h>
 
 #define IDT_SIZE 256
 #define INTERRUPT_GATE 0x8E
@@ -31,7 +32,7 @@ struct s_IDT_entry
   uint16_t offset_higherbits;
 } __attribute__((packed));
 
-void idt_init(void);
+t_kstat idt_init(void);
 void load_idt(void* add, const uint16_t size);
 
 #endif
