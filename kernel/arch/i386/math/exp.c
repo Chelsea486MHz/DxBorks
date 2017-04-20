@@ -22,7 +22,6 @@ long double exp(const long double x)
     res += pow(x, 9) / fact(9);
     res += pow(x, 10) / fact(10);
     res += pow(x, 11) / fact(11);
-    res += pow(x, 12) / fact(12);
     #endif
     return (res);
 }

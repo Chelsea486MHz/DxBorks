@@ -17,7 +17,7 @@ uint32_t fact(const uint8_t x)
   #if (MATH_FASTFACT == 1)
   uint32_t _fact_table[12] =
   {
-    0,
+    1,
     1,
     2,
     6,

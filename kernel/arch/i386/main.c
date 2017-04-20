@@ -13,8 +13,10 @@ void kernel_main(void)
   keyboard_init();
   serial_init(SERIAL_PORT_0);
 
-  tty_puts(WELCOME_BANNER"\n");
+  tty_puts("Initiating self-test...\n");
+  self_test();
 
+  tty_puts(WELCOME_BANNER"\n");
   serial_write(SERIAL_PORT_0, "Hello, world!", 13);
   /*kernel_panic(PANIC_NOTHING, __FILE__, __LINE__);*/
 }

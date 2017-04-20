@@ -79,10 +79,22 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/arch/i386/main.o" />
+		<Unit filename="kernel/arch/i386/math/exp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/math/fact.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/math/pow.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="kernel/arch/i386/panic.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/arch/i386/panic.o" />
+		<Unit filename="kernel/arch/i386/self_test.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="kernel/arch/i386/serial.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -108,6 +120,16 @@
 		<Unit filename="kernel/include/kernel/tty.h" />
 		<Unit filename="kernel/include/kernel/vm/vm.h" />
 		<Unit filename="kernel/include/keymap.h" />
+		<Unit filename="kernel/include/libk/libk.h" />
+		<Unit filename="kernel/include/libk/null.h" />
+		<Unit filename="kernel/include/libk/size_t.h" />
+		<Unit filename="kernel/include/libk/stdarg.h" />
+		<Unit filename="kernel/include/libk/stdint.h" />
+		<Unit filename="kernel/include/libk/va_list.h" />
+		<Unit filename="kernel/include/math/exp.h" />
+		<Unit filename="kernel/include/math/fact.h" />
+		<Unit filename="kernel/include/math/math.h" />
+		<Unit filename="kernel/include/math/pow.h" />
 		<Unit filename="kernel/include/null.h" />
 		<Unit filename="kernel/include/size_t.h" />
 		<Unit filename="kernel/include/stdarg.h" />

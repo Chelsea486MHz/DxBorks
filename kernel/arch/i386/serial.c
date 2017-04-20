@@ -97,11 +97,11 @@ size_t serial_write(const uint16_t port, const char *buf, const size_t len)
     serial_writeb(port, buf[i]);
     #ifdef DEBUG
     {
-      tty_puts("[  ");
+      tty_puts("[");
       tty_set_colour(tty_map_colour(VGA_BROWN, VGA_BLACK));
-      tty_puts("DEBUG");
+      tty_puts("SERIAL");
       tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
-      tty_puts("  ] Byte \"");
+      tty_puts("] Byte \"");
       tty_putn(buf[i]);
       tty_puts("\" has been sent through serial port ");
       tty_putn(port - SERIAL_PORT_0);
