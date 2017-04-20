@@ -1,10 +1,10 @@
-#include <size_t.h>
-#include <stdint.h>
+#include <libk/size_t.h>
+#include <libk/stdint.h>
 
 #include <kernel/def.h>
 #include <kernel/panic.h>
 #include <kernel/tty.h>
-#include <kernel/libk.h>
+#include <libk/libk.h>
 #include <vga.h>
 #include <ascii.h>
 

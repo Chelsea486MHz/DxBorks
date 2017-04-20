@@ -1,4 +1,4 @@
-#include <kernel/libk.h>
+#include <libk/libk.h>
 
 size_t memset(char *dst, const char val, const size_t len)
 {

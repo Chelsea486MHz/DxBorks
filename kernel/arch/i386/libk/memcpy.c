@@ -1,4 +1,4 @@
-#include <kernel/libk.h>
+#include <libk/libk.h>
 
 size_t memcpy(char *dst, const char *src, const size_t len)
 {

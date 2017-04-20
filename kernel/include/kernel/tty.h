@@ -1,9 +1,9 @@
 #ifndef TTY_H_INCLUDED
 #define TTY_H_INCLUDED
 
-#include <size_t.h>
-#include <stdint.h>
-#include <bool.h>
+#include <libk/size_t.h>
+#include <libk/stdint.h>
+#include <libk/bool.h>
 #include <vga.h>
 
 #include <kernel/def.h>
