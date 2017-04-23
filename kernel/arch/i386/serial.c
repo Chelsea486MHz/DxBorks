@@ -48,7 +48,21 @@ t_kstat serial_init(const uint16_t port)
   tty_puts("OK");
   tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
   tty_puts("  ] Serial port ");
-  tty_putn(port - SERIAL_PORT_0);
+  switch(port)
+  {
+    case SERIAL_PORT_0:
+      tty_putc('0');
+      break;
+    case SERIAL_PORT_1:
+      tty_putc('1');
+      break;
+    case SERIAL_PORT_2:
+      tty_putc('2');
+      break;
+    case SERIAL_PORT_3:
+      tty_putc('3');
+      break;
+  }
   tty_puts(" initialized\n");
   return (KSUCCESS);
 }

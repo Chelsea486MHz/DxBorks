@@ -5,6 +5,7 @@
 #include <kernel/def.h>
 #include <kernel/idt.h>
 #include <kernel/kb.h>
+#include <kernel/vm/vm.h>
 
 void kernel_main(void)
 {
@@ -12,11 +13,14 @@ void kernel_main(void)
   idt_init();
   keyboard_init();
   serial_init(SERIAL_PORT_0);
-
-  tty_puts("Initiating self-test...\n");
-  self_test();
-
+  serial_init(SERIAL_PORT_1);
+  serial_init(SERIAL_PORT_2);
+  serial_init(SERIAL_PORT_3);
+  vm_init();
   tty_puts(WELCOME_BANNER"\n");
+
+  /*tty_puts("Initiating self-test...\n");
+  self_test();
   serial_write(SERIAL_PORT_0, "Hello, world!", 13);
-  /*kernel_panic(PANIC_NOTHING, __FILE__, __LINE__);*/
+  kernel_panic(PANIC_NOTHING, __FILE__, __LINE__);*/
 }

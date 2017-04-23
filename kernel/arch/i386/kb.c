@@ -46,5 +46,10 @@ void keyboard_handler_main(void)
 t_kstat keyboard_init(void)
 {
     outb(PORT_PIC1_DATA, 0xFD);
+    tty_puts("[  ");
+    tty_set_colour(tty_map_colour(VGA_GREEN, VGA_BLACK));
+    tty_puts("OK");
+    tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
+    tty_puts("  ] Keyboard initialized (en_US)\n");
     return (KSUCCESS);
 }

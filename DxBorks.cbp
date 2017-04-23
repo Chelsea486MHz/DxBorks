@@ -107,19 +107,18 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/include/ascii.h" />
-		<Unit filename="kernel/include/bool.h" />
-		<Unit filename="kernel/include/ctype.h" />
 		<Unit filename="kernel/include/kernel/asm.h" />
 		<Unit filename="kernel/include/kernel/def.h" />
 		<Unit filename="kernel/include/kernel/idt.h" />
 		<Unit filename="kernel/include/kernel/kb.h" />
-		<Unit filename="kernel/include/kernel/libk.h" />
 		<Unit filename="kernel/include/kernel/main.h" />
 		<Unit filename="kernel/include/kernel/panic.h" />
 		<Unit filename="kernel/include/kernel/serial.h" />
 		<Unit filename="kernel/include/kernel/tty.h" />
 		<Unit filename="kernel/include/kernel/vm/vm.h" />
 		<Unit filename="kernel/include/keymap.h" />
+		<Unit filename="kernel/include/libk/bool.h" />
+		<Unit filename="kernel/include/libk/ctype.h" />
 		<Unit filename="kernel/include/libk/libk.h" />
 		<Unit filename="kernel/include/libk/null.h" />
 		<Unit filename="kernel/include/libk/size_t.h" />
@@ -130,11 +129,6 @@
 		<Unit filename="kernel/include/math/fact.h" />
 		<Unit filename="kernel/include/math/math.h" />
 		<Unit filename="kernel/include/math/pow.h" />
-		<Unit filename="kernel/include/null.h" />
-		<Unit filename="kernel/include/size_t.h" />
-		<Unit filename="kernel/include/stdarg.h" />
-		<Unit filename="kernel/include/stdint.h" />
-		<Unit filename="kernel/include/va_list.h" />
 		<Unit filename="kernel/include/vga.h" />
 		<Unit filename="obj/Debug/kernel/arch/i386/boot/boot.o" />
 		<Extensions>

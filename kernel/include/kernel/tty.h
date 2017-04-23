@@ -15,7 +15,7 @@
 t_kstat  tty_init(void);
 void     tty_clear(void);
 void     tty_scroll(void);
-void     tty_delete_last(void);
+t_kstat  tty_delete_last(void);
 void     tty_set_colour(const uint8_t colour);
 
 uint8_t  tty_map_colour(const t_vga_colour fg, const t_vga_colour bg);

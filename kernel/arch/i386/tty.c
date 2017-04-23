@@ -81,21 +81,21 @@ size_t tty_write(const char *buf, const size_t len)
     if (buf[i] == ASCII_NEWLINE)
     {
       tty_column = 0;
-      tty_row = (tty_row + 1);
+      ++tty_row;
       if (tty_row >= TTY_HEIGHT)
       {
         tty_scroll();
-        tty_row -= 1;
+        tty_row = TTY_HEIGHT - 1;
       }
     }
 
     else
     {
       tty_put_raw(buf[i], tty_column, tty_row);
-      if (++tty_column == TTY_WIDTH)
+      if (++tty_column >= TTY_WIDTH)
       {
         tty_column = 0;
-        if (++tty_row == TTY_HEIGHT)
+        if (++tty_row >= TTY_HEIGHT)
         {
           tty_scroll();
           tty_row -= 1;
@@ -156,6 +156,8 @@ size_t tty_putn(const int n)
   return (count);
 }
 
+
+/*
 void tty_scroll(void)
 {
   size_t y;
@@ -163,15 +165,39 @@ void tty_scroll(void)
   y = 0;
   while (y < TTY_HEIGHT - 1)
   {
-    memcpy((char*)tty_buffer + (y * TTY_WIDTH), (char*)tty_buffer + ((y + 1) * TTY_WIDTH), TTY_WIDTH);
+    memcpy((char*)tty_buffer + (y * (TTY_WIDTH * sizeof(uint16_t))) * 2, (char*)tty_buffer + ((y + 1) * TTY_WIDTH) * 2, TTY_WIDTH * sizeof(uint16_t) * 2);
+    ++y;
   }
-  memset((char*)tty_buffer + ((TTY_HEIGHT - 1) * TTY_WIDTH), tty_map_char(ASCII_SPACE, tty_colour), TTY_WIDTH);
+  memset((char*)tty_buffer + (((TTY_HEIGHT * sizeof(uint16_t)) - 1) * TTY_WIDTH), tty_map_char(ASCII_SPACE, tty_colour), TTY_WIDTH * sizeof(uint16_t));
+}*/
+
+void tty_scroll(void)
+{
+  size_t x;
+  size_t y;
+
+  y = 0;
+  while (y < TTY_HEIGHT - 1)
+  {
+    x = 0;
+    while (x < TTY_WIDTH)
+    {
+      tty_buffer[(y * TTY_WIDTH) + x] = tty_buffer[((y + 1) * TTY_WIDTH) + x];
+      ++x;
+    }
+    ++y;
+  }
+
+  x = 0;
+  while (x < TTY_WIDTH)
+    tty_buffer[((TTY_HEIGHT - 1) * TTY_WIDTH) + x++] = tty_map_char(ASCII_SPACE, tty_colour);
 }
 
-void tty_delete_last(void)
+t_kstat tty_delete_last(void)
 {
   if (tty_column == 0)
-    return;
+    return (KFAILURE);
   --tty_column;
   tty_putc(' ');
+  return (KSUCCESS);
 }
