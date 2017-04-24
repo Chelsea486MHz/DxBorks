@@ -13,6 +13,7 @@ uint32_t fact(const uint8_t x)
     tty_puts("FAILED");
     tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
     tty_puts("] Error: trying to compute a value greater than 11!, aborting");
+    return (0);
   }
   #if (MATH_FASTFACT == 1)
   uint32_t _fact_table[12] =
