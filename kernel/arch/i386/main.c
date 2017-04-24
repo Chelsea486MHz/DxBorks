@@ -19,8 +19,8 @@ void kernel_main(void)
   vm_init();
   tty_puts(WELCOME_BANNER"\n");
 
-  /*tty_puts("Initiating self-test...\n");
+  tty_puts("Initiating self-test...\n");
   self_test();
   serial_write(SERIAL_PORT_0, "Hello, world!", 13);
-  kernel_panic(PANIC_NOTHING, __FILE__, __LINE__);*/
+  /*kernel_panic(PANIC_NOTHING, __FILE__, __LINE__);*/
 }

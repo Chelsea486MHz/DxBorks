@@ -85,7 +85,7 @@ t_kstat idt_init(void)
   tty_puts(" with size ");
   tty_putn(IDT_SIZE);
   tty_putc('\n');
-  #elif
+  #else
   tty_puts("[  ");
   tty_set_colour(tty_map_colour(VGA_BROWN, VGA_BLACK));
   tty_puts("OK");
