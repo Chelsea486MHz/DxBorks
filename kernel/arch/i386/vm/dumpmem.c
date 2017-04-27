@@ -8,11 +8,11 @@
 static void dump_entry(const uint8_t add, const uint8_t val)
 {
   tty_set_colour(tty_map_colour(VGA_RED, VGA_BLACK));
-  tty_putn(add);
+  tty_putn_hex2(add);
   tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
   tty_putc(':');
   tty_set_colour(tty_map_colour(VGA_BLUE, VGA_BLACK));
-  tty_putn(val);
+  tty_putn_hex2(val);
   tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
   tty_putc(ASCII_SPACE);
 }
@@ -32,7 +32,6 @@ void vm_dumpmem(const t_vm *dxvm)
       dump_entry((i * 8) + j, dxvm->mem[(i * 8) + j]);
       ++j;
     }
-    tty_putc(ASCII_NEWLINE);
     ++i;
   }
   tty_puts("--- MEMORY DUMP ---\n");

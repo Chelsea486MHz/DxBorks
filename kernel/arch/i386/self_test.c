@@ -9,6 +9,7 @@
 #include <math/exp.h>
 
 #include <ascii.h>
+#include <vga.h>
 
 void self_test(void)
 {
@@ -27,5 +28,7 @@ void self_test(void)
   tty_puts("4!          = "); tty_putn(fact(4)); tty_putc(ASCII_NEWLINE);
   tty_puts("5!          = "); tty_putn(fact(5)); tty_putc(ASCII_NEWLINE);
   tty_puts("6!          = "); tty_putn(fact(6)); tty_putc(ASCII_NEWLINE);
-  tty_puts("Self test completed, make sure the different values are within an acceptable error margin\n");
+  tty_set_colour(tty_map_colour(VGA_GREEN, VGA_BLACK));
+  tty_puts("Self test completed, please check the results.\n");
+  tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
 }

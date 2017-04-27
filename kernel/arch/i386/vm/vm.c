@@ -41,7 +41,7 @@ t_kstat vm_exec(void)
       tty_puts("[DxVM] Execution stopped at cycle ");
       tty_putn(cycle);
       tty_puts(", dumping memory:\n");
-      /*vm_dumpmem(&dxvm);*/
+      vm_dumpmem(&dxvm);
       vmstat = VM_STAT_DUMP;
       break;
     }

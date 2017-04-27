@@ -13,6 +13,26 @@ static size_t tty_column;
 static uint8_t tty_colour;
 static uint16_t *tty_buffer;
 
+static char hex[16] =
+{
+  '0',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F'
+};
+
 t_kstat tty_init(void)
 {
   tty_row = 0;
@@ -185,4 +205,23 @@ t_kstat tty_delete_last(void)
   --tty_column;
   tty_putc(' ');
   return (KSUCCESS);
+}
+
+size_t   tty_putn_hex2(uint8_t n)
+{
+  size_t count;
+
+  count = 0;
+  count += tty_puts("0x");
+  if (n < 0x10)
+  {
+    count += tty_putc('0');
+    count += tty_putc(hex[n]);
+  }
+  else
+  {
+    count += tty_putc(hex[n/0x10]);
+    count += tty_putc(hex[n%0x10]);
+  }
+  return (count);
 }

@@ -7,6 +7,8 @@
 #include <kernel/kb.h>
 #include <kernel/vm/vm.h>
 
+#include <ascii.h>
+
 void kernel_main(void)
 {
   tty_init();

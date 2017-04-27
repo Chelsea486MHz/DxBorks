@@ -27,4 +27,7 @@ size_t   tty_putc(const char c);
 size_t   tty_puts(const char *str);
 size_t   tty_putn(const int n);
 
+size_t   tty_putn_hex2(uint8_t n); /* Outputs n formated as "0x**" */
+size_t   tty_putn_hex(uint32_t n); /* Outputs n formated as "0x********" */
+
 #endif
