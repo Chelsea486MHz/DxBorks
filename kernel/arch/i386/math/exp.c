@@ -11,17 +11,17 @@ long double exp(const long double x)
 
     res = 1;
     res +=  x;
-    res += pow(x, 2) / fact(2);
-    res += pow(x, 3) / fact(3);
-    res += pow(x, 4) / fact(4);
-    res += pow(x, 5) / fact(5);
-    res += pow(x, 6) / fact(6);
-    res += pow(x, 7) / fact(7);
+    res += pow(x, 2) * 0.5000000000;
+    res += pow(x, 3) * 0.1666666666;
+    res += pow(x, 4) * 0.0416666666;
+    res += pow(x, 5) * 0.0083333333;
+    res += pow(x, 6) * 0.0013888888;
+    res += pow(x, 7) * 0.0001984126;
     #if (MATH_SLOWEXP == TRUE)
-    res += pow(x, 8) / fact(8);
-    res += pow(x, 9) / fact(9);
-    res += pow(x, 10) / fact(10);
-    res += pow(x, 11) / fact(11);
+    res += pow(x, 8) * 0.0000248015;
+    res += pow(x, 9) * 2.7557319223E-6;
+    res += pow(x, 10) * 2.755731922E-7;
+    res += pow(x, 11) * 2.505210838E-8;
     #endif
     return (res);
 }

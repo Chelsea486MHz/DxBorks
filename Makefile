@@ -29,6 +29,7 @@ all: $(C_OBJS)
 	$(AS) --32 $(SRC_DIR)/boot/boot.s -o $(OBJ_DIR)/asm_boot.o
 	$(AS) --32 $(SRC_DIR)/io.s -o $(OBJ_DIR)/asm_io.o
 	$(AS) --32 $(SRC_DIR)/kb.s -o $(OBJ_DIR)/asm_kb.o
+	$(AS) --32 $(SRC_DIR)/math/fastexp.s -o $(OBJ_DIR)/asm_fastexp.o
 	mv $(C_OBJS) $(OBJ_DIR)
 	$(LD) -m elf_i386 -nostdlib -T $(SRC_DIR)/linker.ld -o $(BIN_DIR)/isofiles/boot/$(NAME).bin $(OBJ_DIR)/*.o
 	grub-mkrescue -d /usr/lib/grub/$(ARCH)-pc -o $(BIN_DIR)/$(NAME)-$(ARCH).iso $(BIN_DIR)/isofiles

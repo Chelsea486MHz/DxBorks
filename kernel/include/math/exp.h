@@ -2,5 +2,6 @@
 #define EXP_H_INCLUDED
 
 long double exp(const long double x); /* Returns exp(x) */
+double fastexp(const double x);
 
 #endif

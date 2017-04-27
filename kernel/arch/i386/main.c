@@ -22,5 +22,6 @@ void kernel_main(void)
   tty_puts("Initiating self-test...\n");
   self_test();
   serial_write(SERIAL_PORT_0, "Hello, world!", 13);
+  vm_exec();
   /*kernel_panic(PANIC_NOTHING, __FILE__, __LINE__);*/
 }
