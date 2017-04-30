@@ -101,7 +101,6 @@
 		<Unit filename="kernel/arch/i386/tty.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="kernel/arch/i386/tty.o" />
 		<Unit filename="kernel/arch/i386/vm/dumpmem.c">
 			<Option compilerVar="CC" />
 		</Unit>

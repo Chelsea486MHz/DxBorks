@@ -17,6 +17,6 @@ enum e_kstat
 };
 
 /* When defined, prints out lots of useful information */
-/*#define DEBUG*/
+#define DEBUG
 
 #endif
