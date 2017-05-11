@@ -17,12 +17,38 @@ typedef struct s_vm t_vm;
 struct s_vm
 {
   uint8_t ip; /* instruction pointer */
-  uint8_t reg[VM_REG_NB];
-  uint8_t mem[VM_MEM_SIZE];
+  uint16_t sp; /* Stack pointer. Extended to a 16bits variable to allow the use of the address 0x100 */
+  uint8_t st; /* Status register */
+
+  uint8_t reg[VM_REG_NB]; /* GP registers */
+
+  uint8_t mem[VM_MEM_SIZE]; /* memory */
 } __attribute__((packed)); /* Pack the struct to save memory */
 
 /* VM operations */
-t_kstat vm_op_nop(t_vm *dxvm);
+uint8_t vm_op_nop(t_vm *dxvm);
+uint8_t vm_op_add(t_vm *dxvm);
+uint8_t vm_op_sub(t_vm *dxvm);
+uint8_t vm_op_xor(t_vm *dxvm);
+uint8_t vm_op_or(t_vm *dxvm);
+uint8_t vm_op_not(t_vm *dxvm);
+uint8_t vm_op_and(t_vm *dxvm);
+uint8_t vm_op_lshift(t_vm *dxvm);
+uint8_t vm_op_rshift(t_vm *dxvm);
+uint8_t vm_op_loada(t_vm *dxvm);
+uint8_t vm_op_loadb(t_vm *dxvm);
+uint8_t vm_op_loadc(t_vm *dxvm);
+uint8_t vm_op_loadd(t_vm *dxvm);
+uint8_t vm_op_push(t_vm *dxvm);
+uint8_t vm_op_pusha(t_vm *dxvm);
+uint8_t vm_op_pushb(t_vm *dxvm);
+uint8_t vm_op_pushc(t_vm *dxvm);
+uint8_t vm_op_pushd(t_vm *dxvm);
+uint8_t vm_op_popa(t_vm *dxvm);
+uint8_t vm_op_popb(t_vm *dxvm);
+uint8_t vm_op_popc(t_vm *dxvm);
+uint8_t vm_op_popd(t_vm *dxvm);
+
 
 t_kstat vm_init(void);
 t_kstat vm_exec(void);

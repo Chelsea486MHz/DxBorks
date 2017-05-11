@@ -7,9 +7,30 @@
 static t_vm dxvm;
 
 /* Opcode table */
-t_kstat (*vm_op_tab[])(t_vm *dxvm) =
+uint8_t (*vm_op_tab[])(t_vm *dxvm) =
 {
-  vm_op_nop
+  vm_op_nop,
+  vm_op_add,
+  vm_op_sub,
+  vm_op_xor,
+  vm_op_or,
+  vm_op_not,
+  vm_op_and,
+  vm_op_lshift,
+  vm_op_rshift,
+  vm_op_loada,
+  vm_op_loadb,
+  vm_op_loadc,
+  vm_op_loadd,
+  vm_op_push,
+  vm_op_pusha,
+  vm_op_pushb,
+  vm_op_pushc,
+  vm_op_pushd,
+  vm_op_popa,
+  vm_op_popb,
+  vm_op_popc,
+  vm_op_popd
 };
 
 t_kstat vm_init(void)
@@ -27,7 +48,7 @@ t_kstat vm_init(void)
 t_kstat vm_exec(void)
 {
   uint32_t cycle;
-  t_kstat vmstat;
+  uint8_t vmstat;
 
   cycle = 0;
   tty_puts("[DxVM] Virtual Machine beggining program execution...\n");
