@@ -225,3 +225,21 @@ size_t   tty_putn_hex2(uint8_t n)
   }
   return (count);
 }
+
+size_t   tty_putn_hex2_short(uint8_t n)
+{
+  size_t count;
+
+  count = 0;
+  if (n < 0x10)
+  {
+    count += tty_putc('0');
+    count += tty_putc(hex[n]);
+  }
+  else
+  {
+    count += tty_putc(hex[n/0x10]);
+    count += tty_putc(hex[n%0x10]);
+  }
+  return (count);
+}

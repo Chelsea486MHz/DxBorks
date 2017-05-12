@@ -104,13 +104,13 @@
 		<Unit filename="kernel/arch/i386/vm/dumpmem.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="kernel/arch/i386/vm/load.c">
-			<Option compilerVar="CC" />
-		</Unit>
 		<Unit filename="kernel/arch/i386/vm/op/add.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/arch/i386/vm/op/and.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/vm/op/jmp.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/arch/i386/vm/op/loada.c">
@@ -171,6 +171,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/arch/i386/vm/op/xor.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/vm/vm.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/include/ascii.h" />

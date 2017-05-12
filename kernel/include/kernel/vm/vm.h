@@ -13,6 +13,9 @@
 #define VM_STAT_FATAL 0x02 /* Stop the VM and undergo a kernel panic */
 #define VM_STAT_DUMP  0x03 /* Stp the VM and dump memory */
 
+#define VM_DUMPMEM_ENTRIES_PER_LINE 13
+#define VM_DUMPREGS 0 /* vm_dumpmem() umps the register values when set to 1 */
+
 typedef struct s_vm t_vm;
 struct s_vm
 {
@@ -48,7 +51,7 @@ uint8_t vm_op_popa(t_vm *dxvm);
 uint8_t vm_op_popb(t_vm *dxvm);
 uint8_t vm_op_popc(t_vm *dxvm);
 uint8_t vm_op_popd(t_vm *dxvm);
-
+uint8_t vm_op_jmp(t_vm *dxvm);
 
 t_kstat vm_init(void);
 t_kstat vm_exec(void);
