@@ -1,6 +1,6 @@
 # DxBorks
 
-**To execute your own program, edit the program's memory in `DxBorks/kernel/arch/i386/vm/vm.c`. Example program can be found below.**
+**To execute your own program, edit the program's memory in `DxBorks/kernel/arch/i386/vm/vm.c`. Example programs can be found below.**
 
 - The executed instruction is located at the address (%ip). The value C is the value located at the address (%ip) + 1.
 
