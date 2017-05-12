@@ -52,6 +52,7 @@ uint8_t vm_op_popd(t_vm *dxvm);
 
 t_kstat vm_init(void);
 t_kstat vm_exec(void);
+t_kstat vm_load(void);
 void vm_dumpmem(const t_vm *dxvm);
 
 #endif

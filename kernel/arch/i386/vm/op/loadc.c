@@ -3,6 +3,6 @@
 
 uint8_t vm_op_loadc(t_vm *dxvm)
 {
-  (dxvm->reg)[2] = (dxvm->mem)[(dxvm->ip)+1];
+  (dxvm->reg)[2] = (dxvm->mem)[++(dxvm->ip)];
   return (KSUCCESS);
 }

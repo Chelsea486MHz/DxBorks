@@ -115,9 +115,9 @@ size_t serial_write(const uint16_t port, const char *buf, const size_t len)
       tty_set_colour(tty_map_colour(VGA_BROWN, VGA_BLACK));
       tty_puts("SERIAL");
       tty_set_colour(tty_map_colour(VGA_LIGHT_GREY, VGA_BLACK));
-      tty_puts("] Byte \"");
-      tty_putn(buf[i]);
-      tty_puts("\" has been sent through serial port ");
+      tty_puts("] Byte ");
+      tty_putn_hex2(buf[i]);
+      tty_puts(" has been sent through serial port ");
       tty_putn(port - SERIAL_PORT_0);
       tty_putc('\n');
     }
