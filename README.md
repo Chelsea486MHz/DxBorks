@@ -1,6 +1,8 @@
 # DxBorks
 
-- The instruction is located at the address (%ip). The value C is the value located at the address (%ip) + 1.
+**To execute your own program, edit the program's memory in `DxBorks/kernel/arch/i386/vm/vm.c`. Example programs can be found below.**
+
+- The executed instruction is located at the address (%ip). The value C is the value located at the address (%ip) + 1.
 
 - There are 4 registers, %a, %b, %c, and %d
 
@@ -61,3 +63,39 @@
     0x--      mul         %a *= %b
     0x--      div         %a /= %b
     0x--      mod         %a %= %b
+
+# Example programs
+
+This program loads 22 in %a, 16 in %b, computes the sum of %a + %b, substracts 10, and doubles its value before storing it at the stop of the stack:
+
+    push 22       # Stores 22 on top of the stack
+    push 16       # Stores 16 on top of the stack
+    popb          # Pops the top of the stack (16) to %b
+    popa          # Pops the top of the stack (22) to %a
+    add           # Adds %b (16) to %a (22)
+    loadb 10      # Sets %b (16) to 10
+    sub           # Subtracts %b (10) from %a (38)
+    pusha         # Stores %a (38) on top of the stack
+    popb          # Pops the top of the stack (38) to %b (10)
+    add           # Adds %b (38) to %a (38)
+    pusha         # Stores %a (76) on top of the stack
+
+When translated to hexadecimal VM code, we get:
+
+    0x0d 0x16
+    0x0d 0x10
+    0x13
+    0x12
+    0x01
+    0x0a 0x0a
+    0x02
+    0x0e
+    0x13
+    0x01
+    0x0e
+
+Our program, when inlined, should be:
+
+    0x0d 0x16 0x0d 0x10 0x13 0x12 0x01 0x0a 0x0a 0x02 0x0e 0x13 0x01 0x0e
+
+And should store 0x4C at the memory address (VM_MEM_SIZE-1) (default: 0xFF)
