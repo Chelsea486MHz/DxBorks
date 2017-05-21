@@ -110,7 +110,28 @@
 		<Unit filename="kernel/arch/i386/vm/op/and.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="kernel/arch/i386/vm/op/cjmp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/vm/op/dec.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/vm/op/disp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/vm/op/eq.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/vm/op/great.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/vm/op/inc.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="kernel/arch/i386/vm/op/jmp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/vm/op/less.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/arch/i386/vm/op/loada.c">
@@ -126,6 +147,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/arch/i386/vm/op/lshift.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/vm/op/neq.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/arch/i386/vm/op/nop.c">
@@ -165,6 +189,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/arch/i386/vm/op/rshift.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="kernel/arch/i386/vm/op/stop.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="kernel/arch/i386/vm/op/sub.c">

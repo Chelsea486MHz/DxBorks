@@ -5,5 +5,5 @@ uint8_t vm_op_pushb(t_vm *dxvm)
 {
   --(dxvm->sp);
   (dxvm->mem)[dxvm->sp] = (dxvm->reg)[1];
-  return (KSUCCESS);
+  return (VM_STAT_RUN);
 }

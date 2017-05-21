@@ -4,5 +4,5 @@
 uint8_t vm_op_lshift(t_vm *dxvm)
 {
   (dxvm->reg)[0] = (dxvm->reg)[0] << (dxvm->reg)[1];
-  return (KSUCCESS);
+  return (VM_STAT_RUN);
 }

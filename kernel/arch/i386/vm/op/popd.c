@@ -7,5 +7,5 @@ uint8_t vm_op_popd(t_vm *dxvm)
     return (VM_STAT_FATAL);
   (dxvm->reg)[3] = (dxvm->mem)[(dxvm->sp)];
   ++(dxvm->sp);
-  return (KSUCCESS);
+  return (VM_STAT_RUN);
 }
