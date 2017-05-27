@@ -5,6 +5,7 @@
 #include <math/math.h>
 #include <libk/stdint.h>
 
-long double pow(const long double base, const int16_t exp);
+long double pow(const long double base, const int16_t _exp);
+long double powf(const long double base, const long double exp);
 
 #endif
