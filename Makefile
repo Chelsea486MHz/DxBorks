@@ -23,7 +23,7 @@ C_OBJS := $(C_SRCS:.c=.o)
 
 WARNINGS := -Wall -Wextra -Werror -Wshadow -Wpointer-arith -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls -Wnested-externs -Winline -Wno-long-long -Wuninitialized -Wstrict-prototypes
 
-CFLAGS := -c -m32 -std=c89 -ffreestanding -nostdlib -O2 -I$(HDR_DIR) $(WARNINGS)
+CFLAGS := -c -m32 -std=c89 -fno-stack-protector -ffreestanding -nostdlib -O2 -I$(HDR_DIR) $(WARNINGS)
 
 all: $(C_OBJS)
 	$(AS) --32 $(SRC_DIR)/boot/boot.s -o $(OBJ_DIR)/asm_boot.o
